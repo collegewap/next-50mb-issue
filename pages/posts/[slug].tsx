@@ -19,7 +19,6 @@ import type {
 } from '../../lib/types'
 import {
   getCoverImageDetails,
-  getPostFilePaths,
   PUBLIC_URL,
   readPostFilePaths,
 } from '../../utils/mdxUtils'
@@ -156,7 +155,7 @@ export const getStaticProps = async ({
 }
 
 export const getStaticPaths = async (): Promise<PathProps> => {
-  const postFilePaths = await getPostFilePaths()
+  const postFilePaths = await readPostFilePaths()
   // Map the path into the static paths object required by Next.js
   const paths = postFilePaths.map((item) => ({ params: { slug: item.slug } }))
 
